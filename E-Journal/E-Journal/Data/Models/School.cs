@@ -9,7 +9,7 @@
         [Required]
         public string Name { get; set; }
         [Required]
-        public string City { get; set; }
+        public int CityId { get; set; }
         [Required]
         [ForeignKey("Director")]
         public string DirectorId { get; set; }

@@ -3,6 +3,7 @@ namespace E_Journal
     using E_Journal.Data;
     using E_Journal.Data.Models;
     using E_Journal.Infrastructure;
+    using E_Journal.Services.School;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -36,6 +37,8 @@ namespace E_Journal
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddTransient<ISchoolService, SchoolService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
