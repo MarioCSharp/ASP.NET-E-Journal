@@ -14,5 +14,7 @@
         public string UserId { get; set; }
         [Required]
         public string Subject { get; set; }
+        [Required]
+        public bool HaveClass { get; set; }
     }
 }

@@ -7,10 +7,13 @@
     public class AddSchoolFormModel
     {
         [Required]
+        [Display(Name = "Name")]
         public string SchoolName { get; set; }
         [Required]
+        [Display(Name = "City")]
         public int CityId { get; set; }
         [Required]
+        [Display(Name = "Director")]
         public string DirectorId { get; set; }
 
         public List<UserDisplayModel> Users { get; set; }
