@@ -9,9 +9,7 @@
         [Required]
         public string ClassName { get; set; }
         [Required]
-        public int SchoolId { get; set; }
-        [Required]
-        public int TeacherId { get; set; }
+        public string TeacherId { get; set; }
         public List<TeacherDisplayModel> Teachers { get; set; }
 
     }

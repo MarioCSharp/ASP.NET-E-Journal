@@ -5,6 +5,7 @@
     using E_Journal.Services.School;
     using E_Journal.Services.Teacher;
     using E_Journal.Services.User;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     public class TeacherController : Controller
     {
@@ -22,7 +23,7 @@
             this.userService = userService;
             this.schoolService = schoolService;
         }
-
+        [Authorize]
         public IActionResult Add()
         {
             var id = userService.GetUserId();
@@ -41,9 +42,35 @@
 
             return View(new TeacherAddFormModel
             {
-                SchoolId = schooldId,
                 Users = userService.GetAllUsers()
             });
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Add(TeacherAddFormModel mdl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(mdl);
+            }
+
+            var id = userService.GetUserId();
+
+            if (!directorService.IsDirector(id))
+            {
+                return BadRequest();
+            }
+
+            var schoolId = schoolService.GetSchoolIdByDirectorId(id);
+
+            var created = teacherService.Create(mdl, schoolId);
+
+            if (!created)
+            {
+                return BadRequest();
+            }
+
+            return RedirectToAction("Manage", "Director");
         }
     }
 }

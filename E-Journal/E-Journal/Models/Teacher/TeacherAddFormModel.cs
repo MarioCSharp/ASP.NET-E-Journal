@@ -10,8 +10,6 @@ namespace E_Journal.Models.Teacher
         public string UserId { get; set; }
         public List<UserDisplayModel> Users { get; set; }
         [Required]
-        public int SchoolId { get; set; }
-        [Required]
         public string Subject { get; set; }
     }
 }

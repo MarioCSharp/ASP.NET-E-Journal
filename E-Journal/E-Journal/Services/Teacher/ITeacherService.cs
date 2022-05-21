@@ -5,5 +5,6 @@
     public interface ITeacherService
     {
         List<TeacherDisplayModel> GetAllTeachersWithoutClass(int schoolId);
+        bool Create(TeacherAddFormModel mdl, int schoolId);
     }
 }

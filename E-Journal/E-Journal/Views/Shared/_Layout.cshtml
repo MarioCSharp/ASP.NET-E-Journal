@@ -26,16 +26,15 @@
                         @if (service.IsAdmin())
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="School" asp-action="Add">Add School</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="School" asp-action="Add">Добави училище</a>
                             </li>
                         }
-                        @if (directorService.IsDirector(service.GetUserId()))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Class" asp-action="Add">Add class</a>
-                            </li>
-                        }
+
                     </ul>
+                    @if (directorService.IsDirector(service.GetUserId()))
+                    {
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Director" asp-action="Manage">Управлявай училището ти</a>
+                    }
                     <partial name="_LoginPartial" />
                 </div>
             </div>

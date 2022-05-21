@@ -1,0 +1,19 @@
+﻿@using E_Journal.Services.Director
+@using E_Journal.Services.User
+@inject IUserService service
+@inject IDirectorService directorService
+
+<div class="text-center">
+    @if (directorService.IsDirector(service.GetUserId()))
+    {
+        <div class="form-group">
+            <a asp-controller="Teacher" asp-action="Add" class="btn btn-primary btn-lg">Добави учител</a>
+        </div>
+        <div class="form-group">
+            <a asp-controller="Class" asp-action="Add" class="btn btn-primary btn-lg">Добави клас</a>
+        </div>
+        <div class="form-group">
+            <a asp-controller="Class" asp-action="Delete" class="btn btn-primary btn-lg">Изтрий клас</a>
+        </div>
+    }
+</div>
